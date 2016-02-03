@@ -1,0 +1,14 @@
+uwsgi:
+  build: uwsgi/
+  ports:
+    - 3031
+    - 9191
+
+nginx:
+  build: nginx/
+  ports:
+    - "80:80"
+  links:
+    - uwsgi
+  volumes:
+    - ./upstream:/etc/nginx/upstream/
